@@ -1,21 +1,28 @@
-# MyFlix-client
- 
-<h3>MyFlix React App </h3> 
-<ul>
-<li>Added Build Tool Parcel </li>
-<li>Points to src/index.html </li>
-<li>Terminal Command: parcel src/index.html </li>
-</ul>
+# **My Movie List Client Project** 
+Welcome to the My Movie List client project! This is a single-page, responsive movie application that provides information about different movies, directors, and genres. Users can sign up, browse through movie details, update their personal information, and create a list of their favorite movies. You can access and use the website [here](https://mymovielistj.netlify.app/).
 
+## **Technologies Used**
+The My Movie List client application is built using the following technologies:
 
-|                    Business Logic                    |                URL               | HTTP Method |  Query Parameters  |                                                                  Request Body Data Format                                                                  |                                                                                                  Response Body Data Format                                                                                                  |
-|:----------------------------------------------------:|:--------------------------------:|:-----------:|:------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| Returns a list of all movies                         | /movies                          | GET         | -                  | -                                                                                                                                                          | A JSON object holding data about all the movies                                                                                                                                                                             |
-| Returns data about single movie by title             | /movies/:Title                   | GET         | :title             | -                                                                                                                                                          | A JSON object holding data about a single movie                                                                                                                                                                             |
-| Returns data about a genre by title                  | /movies/genre/:genreName         | GET         | :genreName         | -                                                                                                                                                          | A JSON object holding data about a specific genre of movie                                                                                                                                                                  |
-| Returns data about a director by name                | /movies/directors/:directorName  | GET         | :directorName      | -                                                                                                                                                          | A JSON object holding data about a specific director                                                                                                                                                                        |
-| Allows new users to register                         | /users                           | POST        | -                  | A JSON object holding data about the users to add, structured like this: { "Username": "String","Password": "String","Email": "String","Birthday": "Date"} | A JSON object holding data about the user that was added, structured like this { "username" : "Test1", "Password": "1234", "Email": "testtest@gmail.com", "Birthday": "1988-08-08", "favorite movie" : [] } including an ID |
-| Allows users to update their user info               | /users/:Username                 | PUT         | :Username          | -                                                                                                                                                          | A JSON object holding data about the updated user information                                                                                                                                                               |
-| Allows users to add a movie to their favourites      | /users/:Username/movies/:MovieID | POST        | :Username,:MovieID | -                                                                                                                                                          | A JSON object holding data about the user and the movie that was added                                                                                                                                                      |
-| Allows users to remove a movie from their favourites | /users/:Username/movies/:MovieID | DELETE      | :Username,:MovieID | -                                                                                                                                                          | A JSON object holding data about the user and the movie that was removed                                                                                                                                                    |
-| Allows existing users to deregister                  | /users/:Username                 | DELETE      | -                  | -                                                                                                                                                          | A text message indicating whether the user has successfully deregistered                                                                                                                                                    |
+- React
+- Node.js
+- Express
+- Parcel (for bundling and serving)
+- React Bootstrap (for responsive UI design)
+- Getting Started
+
+## Features
+The My Movie List client project is designed to interact with the Movie Flix API. The API supports the following features:
+
+- Get All Movies
+- Get Single Movie by Title
+- Get Genre by Name
+- Get Director by Name
+- User Registration
+- Update User Info
+- Add Movie to Favorites
+- Remove Movie from Favorites
+- User Deregistration
+
+## Documentation
+For detailed information about the API endpoints and how they work, please refer to the ["My Movie List" API documentation page](https://github.com/birdieber/Movie-API/tree/main)https://github.com/birdieber/Movie-API/tree/main.
