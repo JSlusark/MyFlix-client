@@ -1,4 +1,4 @@
-# **My Movie List Client Project** 
+# **My Movie List Client Project (React)** 
 Welcome to the My Movie List client project! This is a single-page, responsive movie application that provides information about different movies, directors, and genres. Users can sign up, browse through movie details, update their personal information, and create a list of their favorite movies. You can access and use the website [here](https://mymovielistj.netlify.app/).
 
 ## **Technologies Used**
