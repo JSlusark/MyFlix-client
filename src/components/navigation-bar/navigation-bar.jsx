@@ -19,7 +19,7 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
 					as={Link}
 					to="/"
 				>
-					My Movie List
+					My Movie
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
