@@ -4,7 +4,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
-import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { NavBar } from "../NavBar/NavBar";
 import { ProfileView } from "../profile-view/profile-view";
 import "./main-view.scss";
 
@@ -54,7 +54,7 @@ export const MainView = () => {
 		// wrapping all child components in a single row
 
 		<BrowserRouter>
-			<NavigationBar
+			<NavBar
 				user={user}
 				onLoggedOut={() => {
 					setUser(null);
@@ -108,8 +108,6 @@ export const MainView = () => {
 								</>
 							}
 						/>
-
-						{/* trying to add user profile here */}
 
 						<Route
 							path="/profileview"
