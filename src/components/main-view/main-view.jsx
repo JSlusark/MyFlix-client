@@ -19,13 +19,15 @@ import { UserFavoriteMovies } from "../user-favorite-movies/UserFavoriteMovies";
 export const MainView = () => {
 	const storedUser = JSON.parse(localStorage.getItem("user"));
 	const storedToken = localStorage.getItem("token");
-	const storedFavoriteList = localStorage.getItem("favoriteList");
+
 	const [user, setUser] = useState(storedUser ? storedUser : null);
 	const [token, setToken] = useState(storedToken ? storedToken : null);
 	const [movies, setMovies] = useState([]);
-	const [favoriteList, setFavoriteList] = useState(
-		storedFavoriteList ? storedUser.favoriteMovies : null
-	);
+	const [favoriteMovies, setFavoriteMovies] = useState([]);
+	// const favoritedMovieData = movies.filter((movie) =>
+	// 	user.favoriteMovies.includes(movie.id)
+	// );
+	// console.log(favoritedMovieData);
 
 	// console.log("favemovielist?" + favoriteList);
 
@@ -50,10 +52,19 @@ export const MainView = () => {
 					};
 				});
 				setMovies(moviesFromApi);
+				setFavoriteMovies(
+					moviesFromApi.filter((movie) =>
+						user.favoriteMovies.includes(movie.id)
+					)
+				);
+			})
+			.catch((error) => {
+				console.error("Error fetching movies:", error);
 			});
 	}, [token]);
+
+	// console.log(favoriteMovies);
 	// console.log("you" + storedToken);
-	useEffect(() => console.log("changed"), [favoriteList]);
 
 	return (
 		// wrapping all child components in a single row
@@ -94,10 +105,9 @@ export const MainView = () => {
 									<Navigate to="/" />
 								) : (
 									<LoginView
-										onLoggedIn={(user, token, favoriteList) => {
+										onLoggedIn={(user, token) => {
 											setUser(user);
 											setToken(token);
-											setFavoriteList(favoriteList);
 										}}
 									/>
 								)
@@ -118,12 +128,12 @@ export const MainView = () => {
 										<ProfileView
 											user={user}
 											movies={movies}
+											favoriteMovies={favoriteMovies}
 											token={token}
-											favoriteList={favoriteList}
 											onLoggedOut={() => {
 												setUser(null);
 												setToken(null);
-												setFavoriteList(null);
+
 												localStorage.clear();
 											}}
 										/>
@@ -167,18 +177,18 @@ export const MainView = () => {
 								) : movies.length === 0 ? (
 									<Col>The list is empty!</Col>
 								) : (
-									<>
-										{movies.map((movie) => (
-											<MovieCard
-												id={movie.id}
-												user={user}
-												movieData={movie}
-												favoriteList={favoriteList}
-												md={3}
-												token={token}
-											/>
-										))}
-									</>
+									movies.map((movie) => (
+										<MovieCard
+											key={movie.id}
+											user={user}
+											movieData={movie}
+											movies={movies}
+											setFavoriteMovies={setFavoriteMovies}
+											favoriteMovies={favoriteMovies}
+											md={3}
+											token={token}
+										/>
+									))
 								)
 							}
 						/>

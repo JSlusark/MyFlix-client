@@ -6,13 +6,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { ProfileUpdateView } from "../profile-update-view/profile-update-view";
 import { UserFavoriteMovies } from "../user-favorite-movies/UserFavoriteMovies";
 
-export const ProfileView = ({
-	user,
-	movies,
-	token,
-	onLoggedOut,
-	favoriteList,
-}) => {
+export const ProfileView = ({ user, movies, token, favoriteMovies }) => {
 	const handleDeleteAccount = () => {
 		if (
 			window.confirm(
@@ -103,8 +97,7 @@ export const ProfileView = ({
 					<UserFavoriteMovies
 						user={user}
 						movies={movies}
-						token={token}
-						favoriteList={favoriteList}
+						favoriteMovies={favoriteMovies}
 					/>
 				)}
 			</Row>

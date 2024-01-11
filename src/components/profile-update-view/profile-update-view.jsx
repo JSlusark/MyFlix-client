@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
-export const ProfileUpdateView = ({ user, token, onProfileUpdate }) => {
+export const ProfileUpdateView = ({ user, token }) => {
 	const [updatedUsername, setUpdatedUsername] = useState("");
 	const [updatedPassword, setUpdatedPassword] = useState("");
 	const [updatedEmail, setUpdatedEmail] = useState("");

@@ -1,21 +1,48 @@
 //Change the name in MovieList
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { MainView } from "../main-view/main-view";
 import { Button, Card, Col } from "react-bootstrap";
 import "./movie-card.scss";
 import { Link } from "react-router-dom";
 import { AddFavorite } from "../add-favorite/add-favorite";
+import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 export const MovieCard = ({
 	movieData,
-	user,
+	movies,
 	token,
-	favoriteList,
-	onChangeFavorites,
+	user,
+	favoriteMovies,
+	setFavoriteMovies,
 }) => {
-	const [isFavorite, setIsFavorite] = useState();
+	const [color, setColor] = useState(false);
+	const isFavorite = user.favoriteMovies.includes(movieData.id);
+
+	useEffect(() => {
+		// Check if the current movie is in the user's favorites and update the color state
+		setColor(isFavorite);
+		console.log("effect activated");
+	}, [favoriteMovies]);
+	console.log(favoriteMovies);
+
+	const toggleFavorite = () => {
+		if (isFavorite) {
+			console.log("already favorited");
+			console.log(movieData);
+			const updatedFavorites = favoriteMovies.filter(
+				(favMovie) => favMovie !== movieData
+			);
+			setFavoriteMovies(updatedFavorites);
+			//I want to be chnag
+		} else {
+			console.log("not favorited");
+			console.log(movieData);
+			setFavoriteMovies([...favoriteMovies, movieData]);
+
+			//I want to be able to update the color of the buttoom to red
+		}
+	};
 
 	return (
 		<Col
@@ -24,14 +51,20 @@ export const MovieCard = ({
 			className="p-3"
 		>
 			<Card className="h-100 ">
-				<AddFavorite
-					user={user}
-					movieData={movieData}
-					token={token}
-					favoriteList={favoriteList}
-					onColorChange={(color) => setIsFavorite(color)}
-					isFavorite={isFavorite}
-				/>
+				<div
+					style={{
+						position: "absolute",
+						top: "5px",
+						left: "5px",
+					}}
+				>
+					<Button
+						variant={color ? "danger" : "secondary"}
+						onClick={toggleFavorite}
+					>
+						<MdOutlineFavoriteBorder />
+					</Button>
+				</div>
 				<Card.Img
 					variant="top"
 					src={movieData.image}
