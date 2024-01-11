@@ -10,7 +10,6 @@ import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 export const MovieCard = ({
 	movieData,
-	movies,
 	token,
 	user,
 	favoriteMovies,

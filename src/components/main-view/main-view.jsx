@@ -24,12 +24,6 @@ export const MainView = () => {
 	const [token, setToken] = useState(storedToken ? storedToken : null);
 	const [movies, setMovies] = useState([]);
 	const [favoriteMovies, setFavoriteMovies] = useState([]);
-	// const favoritedMovieData = movies.filter((movie) =>
-	// 	user.favoriteMovies.includes(movie.id)
-	// );
-	// console.log(favoritedMovieData);
-
-	// console.log("favemovielist?" + favoriteList);
 
 	useEffect(() => {
 		if (!token) {
@@ -63,12 +57,7 @@ export const MainView = () => {
 			});
 	}, [token]);
 
-	// console.log(favoriteMovies);
-	// console.log("you" + storedToken);
-
 	return (
-		// wrapping all child components in a single row
-
 		<BrowserRouter>
 			<NavBar
 				user={user}
@@ -129,11 +118,11 @@ export const MainView = () => {
 											user={user}
 											movies={movies}
 											favoriteMovies={favoriteMovies}
+											setFavoriteMovies={setFavoriteMovies}
 											token={token}
 											onLoggedOut={() => {
 												setUser(null);
 												setToken(null);
-
 												localStorage.clear();
 											}}
 										/>
@@ -177,18 +166,21 @@ export const MainView = () => {
 								) : movies.length === 0 ? (
 									<Col>The list is empty!</Col>
 								) : (
-									movies.map((movie) => (
-										<MovieCard
-											key={movie.id}
-											user={user}
-											movieData={movie}
-											movies={movies}
-											setFavoriteMovies={setFavoriteMovies}
-											favoriteMovies={favoriteMovies}
-											md={3}
-											token={token}
-										/>
-									))
+									movies.map(
+										(movie) => (
+											console.log(movie),
+											(
+												<MovieCard
+													key={movie.id}
+													user={user}
+													movieData={movie}
+													setFavoriteMovies={setFavoriteMovies}
+													favoriteMovies={favoriteMovies}
+													token={token}
+												/>
+											)
+										)
+									)
 								)
 							}
 						/>

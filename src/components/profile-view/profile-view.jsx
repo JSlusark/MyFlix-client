@@ -6,7 +6,13 @@ import { MovieCard } from "../movie-card/movie-card";
 import { ProfileUpdateView } from "../profile-update-view/profile-update-view";
 import { UserFavoriteMovies } from "../user-favorite-movies/UserFavoriteMovies";
 
-export const ProfileView = ({ user, movies, token, favoriteMovies }) => {
+export const ProfileView = ({
+	user,
+	movies,
+	token,
+	favoriteMovies,
+	setFavoriteMovies,
+}) => {
 	const handleDeleteAccount = () => {
 		if (
 			window.confirm(
@@ -80,9 +86,9 @@ export const ProfileView = ({ user, movies, token, favoriteMovies }) => {
 				</Col>
 			</Row>
 			<Row>
-				{user.favoriteMovies.length === 0 ? (
+				{favoriteMovies.length === 0 ? (
 					<Col>
-						<p>Your favorite list is empty! </p>
+						<p style={{ color: "white" }}>Your favorite list is empty! </p>
 						<Link to={`/`}>
 							<Button
 								variant="danger"
@@ -96,8 +102,10 @@ export const ProfileView = ({ user, movies, token, favoriteMovies }) => {
 				) : (
 					<UserFavoriteMovies
 						user={user}
-						movies={movies}
+						movieData
 						favoriteMovies={favoriteMovies}
+						setFavoriteMovies={setFavoriteMovies}
+						token={token}
 					/>
 				)}
 			</Row>
