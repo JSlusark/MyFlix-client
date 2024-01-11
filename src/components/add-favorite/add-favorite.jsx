@@ -13,7 +13,6 @@ export const AddFavorite = ({
 	isFavorite,
 }) => {
 	console.log(movieData);
-	consol;
 
 	const handleToggleFavorite = () => {
 		if (user.favoriteMovies.includes(movieData.id)) {
