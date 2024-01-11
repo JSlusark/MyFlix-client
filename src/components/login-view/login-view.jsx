@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 
 export const LoginView = ({ onLoggedIn }) => {
 	const [username, setUsername] = useState("");
@@ -25,17 +25,18 @@ export const LoginView = ({ onLoggedIn }) => {
 		})
 			.then((response) => response.json())
 			.then((data) => {
-				console.log("Login response: ", data);
-				console.log(username);
-				console.log(password);
-				console.log(data.user.email);
-				console.log(data.user.birthday);
-				data.user.favoriteMovies.map((movie) => console.log(movie));
+				// console.log("Login response: ", data);
+				// console.log(username);
+				// console.log(password);
+				// console.log(data.user.email);
+				// console.log(data.user.birthday);
+				// data.user.favoriteMovies.map((movie) => console.log(movie));
 
 				if (data.user) {
 					localStorage.setItem("user", JSON.stringify(data.user));
 					localStorage.setItem("token", data.token);
-					onLoggedIn(data.user, data.token);
+					localStorage.setItem("favoriteList", data.user.favoriteMovies);
+					onLoggedIn(data.user, data.token, data.user.favoriteMovies);
 				} else {
 					alert("No such user");
 				}
@@ -47,44 +48,49 @@ export const LoginView = ({ onLoggedIn }) => {
 
 	// submit form login
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			className="p-5 bg-light rounded"
+		<Col
+			md={5}
+			className="m-5"
 		>
-			<h1>Log in:</h1>
-			<Form.Group controlId="formUsername">
-				<Form.Label>
-					Username:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="text"
-						value={username}
-						minLength="3"
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-			<Form.Group controlId="formPassword">
-				<Form.Label>
-					Password:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="password"
-						value={password}
-						minLength="5"
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-			<Button
-				variant="primary"
-				type="submit"
-				className="mt-3"
+			<Form
+				onSubmit={handleSubmit}
+				className="p-5 bg-light rounded"
 			>
-				Submit
-			</Button>
-		</Form>
+				<h1>Log in:</h1>
+				<Form.Group controlId="formUsername">
+					<Form.Label>
+						Username:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="text"
+							value={username}
+							minLength="3"
+							onChange={(e) => setUsername(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+				<Form.Group controlId="formPassword">
+					<Form.Label>
+						Password:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="password"
+							value={password}
+							minLength="5"
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+				<Button
+					variant="primary"
+					type="submit"
+					className="mt-3"
+				>
+					Submit
+				</Button>
+			</Form>
+		</Col>
 	);
 };

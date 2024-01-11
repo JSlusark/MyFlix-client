@@ -4,28 +4,15 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MovieCard } from "../movie-card/movie-card";
 import { ProfileUpdateView } from "../profile-update-view/profile-update-view";
+import { UserFavoriteMovies } from "../user-favorite-movies/UserFavoriteMovies";
 
-export const ProfileView = ({ user, movies, token, onLoggedOut }) => {
-	const [favoriteMovies, setFavoriteMovies] = useState([]);
-
-	useEffect(() => {
-		fetchUserDetails();
-	}, []);
-
-	const fetchUserDetails = () => {
-		fetch(`https://shrouded-ocean-05047.herokuapp.com/users/${user.username}`, {
-			method: "GET",
-			headers: { Authorization: `Bearer ${token}` },
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setFavoriteMovies(data.favoriteMovies);
-			})
-			.catch((error) => {
-				console.error("Error:", error);
-			});
-	};
-
+export const ProfileView = ({
+	user,
+	movies,
+	token,
+	onLoggedOut,
+	favoriteList,
+}) => {
 	const handleDeleteAccount = () => {
 		if (
 			window.confirm(
@@ -54,11 +41,6 @@ export const ProfileView = ({ user, movies, token, onLoggedOut }) => {
 				alert(e);
 			});
 	};
-
-	const eachFavoriteMovie = movies.filter((movie) =>
-		favoriteMovies.includes(movie.id)
-	);
-
 	const handleProfileUpdate = () => {
 		// Fetch user details again after profile update
 		fetchUserDetails();
@@ -104,7 +86,7 @@ export const ProfileView = ({ user, movies, token, onLoggedOut }) => {
 				</Col>
 			</Row>
 			<Row>
-				{eachFavoriteMovie.length === 0 ? (
+				{user.favoriteMovies.length === 0 ? (
 					<Col>
 						<p>Your favorite list is empty! </p>
 						<Link to={`/`}>
@@ -118,16 +100,12 @@ export const ProfileView = ({ user, movies, token, onLoggedOut }) => {
 						</Link>
 					</Col>
 				) : (
-					eachFavoriteMovie.map((movie) => (
-						<Col key={movie.id}>
-							<MovieCard
-								user={user}
-								movieData={movie}
-								md={5}
-								token={token}
-							/>
-						</Col>
-					))
+					<UserFavoriteMovies
+						user={user}
+						movies={movies}
+						token={token}
+						favoriteList={favoriteList}
+					/>
 				)}
 			</Row>
 		</div>

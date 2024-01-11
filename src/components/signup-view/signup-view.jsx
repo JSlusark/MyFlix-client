@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 
 export const SignupView = () => {
 	const [username, setUsername] = useState("");
@@ -33,69 +33,74 @@ export const SignupView = () => {
 	};
 
 	return (
-		<Form
-			onSubmit={handleSubmit}
-			className="p-5 bg-light rounded"
+		<Col
+			md={5}
+			className="m-5"
 		>
-			<h1>Signup:</h1>
-			<Form.Group controlId="formGroupUsername">
-				<Form.Label>
-					Username:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="text"
-						value={username}
-						minLength="5"
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-			<Form.Group controlId="formGroupPassword">
-				<Form.Label>
-					Password:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="password"
-						value={password}
-						minLength="5"
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-			<Form.Group controlId="formGroupEmail">
-				<Form.Label>
-					Email:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-			<Form.Group controlId="formGroupBirthday">
-				<Form.Label>
-					Birthday:
-					<Form.Control
-						style={{ "background-color": "#E7F0FE" }}
-						type="date"
-						value={birthday}
-						onChange={(e) => setBirthday(e.target.value)}
-						required
-					/>
-				</Form.Label>
-			</Form.Group>
-
-			<Button
-				variant="primary"
-				type="submit"
-				className="mt-3"
+			<Form
+				onSubmit={handleSubmit}
+				className="p-5 bg-light rounded"
 			>
-				Signup
-			</Button>
-		</Form>
+				<h1>Signup:</h1>
+				<Form.Group controlId="formGroupUsername">
+					<Form.Label>
+						Username:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="text"
+							value={username}
+							minLength="5"
+							onChange={(e) => setUsername(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+				<Form.Group controlId="formGroupPassword">
+					<Form.Label>
+						Password:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="password"
+							value={password}
+							minLength="5"
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+				<Form.Group controlId="formGroupEmail">
+					<Form.Label>
+						Email:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+				<Form.Group controlId="formGroupBirthday">
+					<Form.Label>
+						Birthday:
+						<Form.Control
+							style={{ "background-color": "#E7F0FE" }}
+							type="date"
+							value={birthday}
+							onChange={(e) => setBirthday(e.target.value)}
+							required
+						/>
+					</Form.Label>
+				</Form.Group>
+
+				<Button
+					variant="primary"
+					type="submit"
+					className="mt-3"
+				>
+					Signup
+				</Button>
+			</Form>
+		</Col>
 	);
 };
