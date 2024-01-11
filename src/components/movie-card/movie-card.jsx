@@ -17,19 +17,18 @@ export const MovieCard = ({
 	setFavoriteMovies,
 }) => {
 	const [color, setColor] = useState(false);
-	const isFavorite = user.favoriteMovies.includes(movieData.id);
+	const isFavorite = favoriteMovies.includes(movieData);
 
 	useEffect(() => {
-		// Check if the current movie is in the user's favorites and update the color state
 		setColor(isFavorite);
 		console.log("effect activated");
 	}, [favoriteMovies]);
-	console.log(favoriteMovies);
 
 	const toggleFavorite = () => {
 		if (isFavorite) {
 			console.log("already favorited");
 			console.log(movieData);
+
 			const updatedFavorites = favoriteMovies.filter(
 				(favMovie) => favMovie !== movieData
 			);
@@ -39,8 +38,6 @@ export const MovieCard = ({
 			console.log("not favorited");
 			console.log(movieData);
 			setFavoriteMovies([...favoriteMovies, movieData]);
-
-			//I want to be able to update the color of the buttoom to red
 		}
 	};
 
