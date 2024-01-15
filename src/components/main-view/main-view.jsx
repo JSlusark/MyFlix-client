@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { AddFavorite } from "../add-favorite/add-favorite";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";

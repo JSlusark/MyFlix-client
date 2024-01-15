@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { Button, Card, Col } from "react-bootstrap";
 import "./movie-card.scss";
 import { Link } from "react-router-dom";
-import { AddFavorite } from "../add-favorite/add-favorite";
+
 import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 export const MovieCard = ({
