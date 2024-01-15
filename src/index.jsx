@@ -7,9 +7,9 @@ import { Container } from "react-bootstrap";
 
 const App = () => {
 	return (
-		<div>
+		<Container fluid>
 			<MainView />
-		</div>
+		</Container>
 	);
 };
 

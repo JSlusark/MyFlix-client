@@ -34,6 +34,7 @@ export const SignupView = () => {
 
 	return (
 		<Col
+			xs={12}
 			md={5}
 			className="m-5"
 		>

@@ -13,11 +13,11 @@ export const NavBar = ({ user, onLoggedOut }) => {
 			expand="lg"
 		>
 			<Container
-				style={{
-					marginLeft: "42px",
-					marginRight: "42px",
-					padding: "5px",
-				}}
+			// style={{
+			// 	marginLeft: "42px",
+			// 	marginRight: "42px",
+			// 	padding: "5px",
+			// }}
 			>
 				<Navbar.Brand
 					as={Link}

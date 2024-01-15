@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Container, Button, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { AddFavorite } from "../add-favorite/add-favorite";
 
 // import { FaThumbsUp } from "react-icons/fa";
 

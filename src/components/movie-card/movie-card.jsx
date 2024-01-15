@@ -2,10 +2,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Button, Card, Col } from "react-bootstrap";
-import "./movie-card.scss";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AddFavorite } from "../add-favorite/add-favorite";
+
 import { MdFavorite, MdOutlineFavoriteBorder } from "react-icons/md";
 
 export const MovieCard = ({
@@ -49,7 +48,6 @@ export const MovieCard = ({
 				.catch((error) => {
 					alert(error.message);
 				});
-			//I want to be chnag
 		} else {
 			console.log("not favorited");
 			console.log(movieData);
@@ -76,25 +74,24 @@ export const MovieCard = ({
 
 	return (
 		<Col
-			key={movieData.id}
-			md={3}
+			xs={12}
+			sm={6}
+			md={4}
+			lg={3}
 			className="p-3"
 		>
-			<Card className="h-100 ">
-				<div
-					style={{
-						position: "absolute",
-						top: "5px",
-						left: "5px",
-					}}
+			<Card
+				className=" h-100"
+				key={movieData.id}
+			>
+				<Button
+					variant={color ? "danger" : "secondary"}
+					onClick={toggleFavorite}
+					className="rounded-2 position-absolute m-2"
 				>
-					<Button
-						variant={color ? "danger" : "secondary"}
-						onClick={toggleFavorite}
-					>
-						<MdOutlineFavoriteBorder />
-					</Button>
-				</div>
+					{color ? <MdFavorite /> : <MdOutlineFavoriteBorder />}
+				</Button>
+
 				<Card.Img
 					variant="top"
 					src={movieData.image}
@@ -106,8 +103,7 @@ export const MovieCard = ({
 				<Link to={`/movies/${encodeURIComponent(movieData.id)}`}>
 					<Button
 						variant="primary"
-						style={{ width: "100%" }}
-						className="rounded-0 rounded-bottom"
+						className="rounded-0 rounded-bottom w-100"
 					>
 						Open
 					</Button>
