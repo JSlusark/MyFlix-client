@@ -49,7 +49,7 @@ export const ProfileView = ({
 	return (
 		<div>
 			<Row className="mt-3 ">
-				<Col md={8}>
+				<Col md={6}>
 					<Card style={{ height: "100%" }}>
 						<Card.Body>
 							<Card.Title>User Profile</Card.Title>
@@ -68,7 +68,7 @@ export const ProfileView = ({
 						</Card.Body>
 					</Card>
 				</Col>
-				<Col md={4}>
+				<Col md={6}>
 					<ProfileUpdateView
 						user={user}
 						token={token}

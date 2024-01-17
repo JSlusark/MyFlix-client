@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
+import { Row } from "react-bootstrap";
 
 export const UserFavoriteMovies = ({
 	user,
@@ -18,7 +19,7 @@ export const UserFavoriteMovies = ({
 		console.log(favoriteMovies),
 		console.log(setFavoriteMovies),
 		(
-			<div>
+			<Row>
 				{favoriteMovies.map((movie) => {
 					return (
 						<MovieCard
@@ -31,7 +32,7 @@ export const UserFavoriteMovies = ({
 						/>
 					);
 				})}
-			</div>
+			</Row>
 		)
 	);
 };
