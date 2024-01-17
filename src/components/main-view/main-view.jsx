@@ -111,20 +111,18 @@ export const MainView = () => {
 									replace
 								/>
 							) : (
-								<div>
-									<ProfileView
-										user={user}
-										movies={movies}
-										favoriteMovies={favoriteMovies}
-										setFavoriteMovies={setFavoriteMovies}
-										token={token}
-										onLoggedOut={() => {
-											setUser(null);
-											setToken(null);
-											localStorage.clear();
-										}}
-									/>
-								</div>
+								<ProfileView
+									user={user}
+									movies={movies}
+									favoriteMovies={favoriteMovies}
+									setFavoriteMovies={setFavoriteMovies}
+									token={token}
+									onLoggedOut={() => {
+										setUser(null);
+										setToken(null);
+										localStorage.clear();
+									}}
+								/>
 							)
 						}
 					/>
@@ -141,8 +139,6 @@ export const MainView = () => {
 							) : movies.length === 0 ? (
 								<col> The list is empty! </col>
 							) : (
-								//this is the movie details view (movie view) : selectedMovie ? (
-
 								<MovieView
 									movies={movies}
 									user={user}
