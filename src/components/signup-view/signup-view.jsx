@@ -15,7 +15,7 @@ export const SignupView = () => {
 			birthday: birthday,
 		};
 
-		fetch("https://shrouded-ocean-05047.herokuapp.com/users", {
+		fetch("https://mymovielist-api-dhqp.onrender.com/users", {
 			method: "POST",
 			body: JSON.stringify(data),
 			headers: {

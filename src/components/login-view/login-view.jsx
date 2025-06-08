@@ -16,7 +16,7 @@ export const LoginView = ({ onLoggedIn }) => {
 		};
 
 		//link needs to be changed or endpoint to be added
-		fetch("https://shrouded-ocean-05047.herokuapp.com/login", {
+		fetch("https://mymovielist-api-dhqp.onrender.com/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

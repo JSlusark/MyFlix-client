@@ -25,7 +25,7 @@ export const ProfileView = ({
 
 	const deleteAccount = () => {
 		console.log("deleting");
-		fetch(`https://shrouded-ocean-05047.herokuapp.com/users/${user.username}`, {
+		fetch(`https://mymovielist-api-dhqp.onrender.com/users/${user.username}`, {
 			method: "DELETE",
 			headers: { Authorization: `Bearer ${token}` },
 		})

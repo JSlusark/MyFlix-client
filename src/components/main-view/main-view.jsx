@@ -26,7 +26,7 @@ export const MainView = () => {
 			return;
 		}
 
-		fetch("https://shrouded-ocean-05047.herokuapp.com/movies", {
+		fetch("https://mymovielist-api-dhqp.onrender.com/movies", {
 			headers: { Authorization: `Bearer ${token}` },
 		})
 			.then((response) => response.json())

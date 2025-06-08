@@ -18,7 +18,7 @@ export const ProfileUpdateView = ({ user, token }) => {
 			birthday: updatedBirthday || user.birthday,
 		};
 
-		fetch(`https://shrouded-ocean-05047.herokuapp.com/users/${user.username}`, {
+		fetch(`https://mymovielist-api-dhqp.onrender.com/users/${user.username}`, {
 			method: "PUT",
 			body: JSON.stringify(data),
 			headers: {

@@ -32,7 +32,7 @@ export const MovieCard = ({
 			);
 			setFavoriteMovies(updatedFavorites);
 			fetch(
-				`https://shrouded-ocean-05047.herokuapp.com/users/${user.username}/movies/${movieData.id}`,
+				`https://mymovielist-api-dhqp.onrender.com/users/${user.username}/movies/${movieData.id}`,
 				{ method: "DELETE", headers: { Authorization: `Bearer ${token}` } }
 			)
 				.then((response) => response.json())
@@ -53,7 +53,7 @@ export const MovieCard = ({
 			console.log(movieData);
 			setFavoriteMovies([...favoriteMovies, movieData]);
 			fetch(
-				`https://shrouded-ocean-05047.herokuapp.com/users/${user.username}/movies/${movieData.id}`,
+				`https://mymovielist-api-dhqp.onrender.com/users/${user.username}/movies/${movieData.id}`,
 				{ method: "POST", headers: { Authorization: `Bearer ${token}` } }
 			)
 				.then((response) => response.json())
