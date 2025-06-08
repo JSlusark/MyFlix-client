@@ -12,6 +12,7 @@ export const ProfileView = ({
 	token,
 	favoriteMovies,
 	setFavoriteMovies,
+	onLoggedOut
 }) => {
 	const handleDeleteAccount = () => {
 		if (
